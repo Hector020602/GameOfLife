@@ -4,6 +4,8 @@
  */
 package com.mycompany.gameoflife;
 
+import javax.swing.JToggleButton;
+
 /**
  *
  * @author alu10571073
@@ -29,19 +31,33 @@ public class GameOfLife extends javax.swing.JFrame {
     private void initComponents() {
 
         toolBar = new com.mycompany.gameoflife.ToolBar();
+        jbPlay = new javax.swing.JToggleButton();
         board = new com.mycompany.gameoflife.Board();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jbPlay.setText("PLAY");
+        jbPlay.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbPlayActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout toolBarLayout = new javax.swing.GroupLayout(toolBar);
         toolBar.setLayout(toolBarLayout);
         toolBarLayout.setHorizontalGroup(
             toolBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 460, Short.MAX_VALUE)
+            .addGroup(toolBarLayout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(jbPlay)
+                .addContainerGap(317, Short.MAX_VALUE))
         );
         toolBarLayout.setVerticalGroup(
             toolBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGroup(toolBarLayout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(jbPlay)
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         getContentPane().add(toolBar, java.awt.BorderLayout.PAGE_START);
@@ -50,17 +66,28 @@ public class GameOfLife extends javax.swing.JFrame {
         board.setLayout(boardLayout);
         boardLayout.setHorizontalGroup(
             boardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 460, Short.MAX_VALUE)
+            .addGap(0, 400, Short.MAX_VALUE)
         );
         boardLayout.setVerticalGroup(
             boardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 268, Short.MAX_VALUE)
+            .addGap(0, 200, Short.MAX_VALUE)
         );
 
         getContentPane().add(board, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jbPlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPlayActionPerformed
+        JToggleButton b = (JToggleButton) evt.getSource();
+        if (b.isSelected()) {
+            board.initGame();
+            b.setText("Stop");
+        }else {
+        board.stopGame();
+        b.setText("Play");
+        }
+    }//GEN-LAST:event_jbPlayActionPerformed
 
     /**
      * @param args the command line arguments
@@ -99,6 +126,7 @@ public class GameOfLife extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.mycompany.gameoflife.Board board;
+    private javax.swing.JToggleButton jbPlay;
     private com.mycompany.gameoflife.ToolBar toolBar;
     // End of variables declaration//GEN-END:variables
 }

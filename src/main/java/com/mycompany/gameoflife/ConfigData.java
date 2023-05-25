@@ -11,12 +11,12 @@ package com.mycompany.gameoflife;
 public class ConfigData {
     
     private static final int MIN_ROWS_COLS = 100;
-    private static final int MAX_ROWS_COLS = 100;
+    private static final int MAX_ROWS_COLS = 1000;
     
     private static ConfigData configData;
     
-    private int numRows;
-    private int numCols;
+    private int numRows = 100;
+    private int numCols = 100;
     
     private ConfigData() {
         
